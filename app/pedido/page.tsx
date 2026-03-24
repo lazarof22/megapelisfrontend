@@ -33,10 +33,11 @@ export default function CartPage() {
     setType(p0)
   }
 
-  const [precios, setPrecios] = useState<any>(null)
   const [alquiler, setAlquiler] = useState(false)
   const [telefono, setTelefono] = useState("+53 ")
   const [nombre, setNombre] = useState("")
+
+  const [precios, setPrecios] = useState<any>(null)
 
   useEffect(() => {
     obtenerPrecios()
@@ -51,23 +52,23 @@ export default function CartPage() {
     }
   }
 
-  const getItemTotal = (item: any) => {
+  const getItemTotal = (items: any) => {
 
-    if (!precios) return 0
+    if (!precios) {
+      return 0
+    }
 
-    if (item.tipo === "pelicula") {
+    if (items.tipo === "peliculas") {
       return precios.precioPeliculas
     }
 
-    if (item.tipo === "serie") {
+    if (items.tipo === "series") {
       return precios.precioSeries
     }
 
-    if (item.tipo === "juego") {
+    if (items.tipo === "juegos") {
       return precios.precioJuegos
     }
-
-    return 0
   }
 
   const subtotal = precios
@@ -177,7 +178,7 @@ export default function CartPage() {
               </Typography>
 
               <Typography sx={{ m: 2 }}>
-                Precio: {item.precio}
+                Precio: ${getItemTotal(item)}
               </Typography>
 
               {item.tipo === "series" && item.temporada && (

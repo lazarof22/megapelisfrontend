@@ -8,14 +8,24 @@ import Button from "@mui/material/Button"
 import { useCart } from "@/context/CartContext"
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
-export default function MediaCard({ item }: any) {
+export default function MediaCard({ item, tipo }: any) {
 
   const { addItem } = useCart()
 
   if (!item) return null
 
   const agregar = () => {
-    addItem(item)
+
+    const itemFormateado = {
+      id: item._id, // 🔥 importante (sin Date.now)
+      nombre: item.nombre,
+      tipo: tipo, // 🔥 ahora sí llega bien
+      pesoGB: item.pesoGB,
+      temporada: item.temporada || null,
+      precio: 0
+    }
+
+    addItem(itemFormateado)
   }
 
   return (

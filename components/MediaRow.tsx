@@ -16,15 +16,15 @@ type MediaItem = {
   _id: string
   poster: string
   nombre: string
-  tipo: "peliculas" | "series" | "juegos"
 }
 
 type Props = {
   titulo: string
   items: MediaItem[]
+  tipo: "peliculas" | "series" | "juegos"
 }
 
-export default function MediaRow({ titulo, items }: Props) {
+export default function MediaRow({ titulo, items, tipo }: Props) {
 
   const [cardsPerPage, setCardsPerPage] = useState<number>(5)
   const [page, setPage] = useState<number>(0)
@@ -126,7 +126,7 @@ export default function MediaRow({ titulo, items }: Props) {
             }}
           >
 
-            <MediaCard item={item} />
+            <MediaCard item={item} tipo={tipo} />
 
           </Box>
 

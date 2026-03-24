@@ -36,5 +36,5 @@ export default function MediaSection({ titulo, tipo }: Props) {
 
   if (loading) return null
 
-  return <MediaRow titulo={titulo} items={items} />
+  return <MediaRow titulo={titulo} items={items} tipo={tipo}/>
 }
