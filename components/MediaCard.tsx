@@ -8,6 +8,13 @@ import Button from "@mui/material/Button"
 import { useCart } from "@/context/CartContext"
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
+// ← TIPO actualizado con compact
+type MediaCardProps = {
+  item: any
+  tipo: string
+  compact?: boolean
+}
+
 export default function MediaCard({ item, tipo }: any) {
 
   const { addItem } = useCart()
@@ -32,44 +39,33 @@ export default function MediaCard({ item, tipo }: any) {
 
     <Card
       sx={{
-        minWidth: 200,
+        minWidth: 140,
         maxWidth: 210,
         borderRadius: 2,
         background: "#000",
         color: "#fff",
         position: "relative",
         overflow: "hidden",
-        transition: "transform .3s ease",
-        "&:hover": {
-          transform: "scale(1.05)"
-        },
-        "&:hover .overlay": {
-          opacity: 1
-        }
       }}
     >
-
       <CardMedia
         component="img"
         image={item.poster || "/placeholder.jpg"}
         sx={{ height: 300 }}
       />
 
+      {/* ← Overlay siempre visible, sin opacity ni transition */}
       <Box
-        className="overlay"
         sx={{
           position: "absolute",
           inset: 0,
-          background: "linear-gradient(to top, rgba(0,0,0,.9), rgba(0,0,0,.4))",
-          opacity: 0,
-          transition: "opacity .3s ease",
+          background: "linear-gradient(to top, rgba(0,0,0,.95) 0%, rgba(0,0,0,.3) 50%, transparent 100%)",
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
           p: 2
         }}
       >
-
         <Typography variant="h6" fontWeight="bold">
           {item.nombre}
         </Typography>
@@ -101,9 +97,7 @@ export default function MediaCard({ item, tipo }: any) {
         >
           Pedir
         </Button>
-
       </Box>
-
     </Card>
   )
 }
