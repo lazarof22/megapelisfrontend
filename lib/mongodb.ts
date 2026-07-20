@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 
-const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/megapelistv"
+const MONGO_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/megapelistv"
 
 type MongooseCache = {
   conn: typeof mongoose | null
@@ -24,6 +24,9 @@ export async function connectDB(): Promise<typeof mongoose> {
   if (cached.conn) return cached.conn
 
   if (!cached.promise) {
+    if (!MONGO_URI || MONGO_URI.includes("localhost")) {
+      console.error("⚠️ MONGODB_URI no está definida correctamente:", MONGO_URI)
+    }
     cached.promise = mongoose.connect(MONGO_URI, { bufferCommands: false })
   }
 
