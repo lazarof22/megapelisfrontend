@@ -37,9 +37,9 @@ export default function HeroBannerDynamic() {
     const fetchData = async () => {
       try {
         const [pelis, series, juegos] = await Promise.all([
-          axios.get("http://localhost:4000/peliculas"),
-          axios.get("http://localhost:4000/series"),
-          axios.get("http://localhost:4000/juegos")
+          axios.get("/api/peliculas"),
+          axios.get("/api/series"),
+          axios.get("/api/juegos")
         ])
 
         const all = [

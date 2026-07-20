@@ -86,7 +86,7 @@ export default function AdminPage() {
         data.temporada = Number(temporada)
       }
 
-      await axios.post(`http://localhost:4000/${tipo}`, data)
+      await axios.post(`/api/${tipo}`, data)
 
       mostrarDialogo(
         "Contenido agregado",

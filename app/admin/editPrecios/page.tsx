@@ -53,7 +53,7 @@ export default function ActualizarPrecios() {
     const obtenerPrecios = async () => {
         try {
 
-            const res = await axios.get("http://localhost:4000/precios")
+            const res = await axios.get("/api/precios")
 
             const precios = res.data
 
@@ -90,7 +90,7 @@ export default function ActualizarPrecios() {
                 precioJuegos: Number(precioJuegos)
             }
 
-            await axios.patch(`http://localhost:4000/precios/${precioId}`, data)
+            await axios.patch(`/api/precios/${precioId}`, data)
 
             mostrarDialogo(
                 "Actualizado",

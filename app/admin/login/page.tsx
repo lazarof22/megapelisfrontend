@@ -14,7 +14,7 @@ export default function AdminLogin(){
  const router = useRouter()
 
  const login = async ()=>{
-   const res = await axios.post("http://localhost:4000/auth/login",{username:user,password:pass})
+   const res = await axios.post("/api/auth/login",{username:user,password:pass})
    if(res.data.access_token){
      localStorage.setItem("token",res.data.access_token)
      router.push("/admin")

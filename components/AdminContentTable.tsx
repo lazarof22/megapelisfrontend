@@ -14,13 +14,13 @@ export default function AdminContentTable() {
     const [data, setData] = useState<Array<{ _id: string; poster: string; nombre: string; genero: string }>>([])
 
     const cargar = async () => {
-        const res = await axios.get("http://localhost:4000/peliculas")
+        const res = await axios.get("/api/peliculas")
         setData(res.data)
     }
 
     const eliminar = async (id: string) => {
 
-        await axios.delete(`http://localhost:4000/peliculas/${id}`)
+        await axios.delete(`/api/peliculas/${id}`)
 
         cargar()
 

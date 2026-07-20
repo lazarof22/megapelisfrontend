@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Mongoose y el driver de MongoDB se ejecutan en el servidor (API routes)
+  serverExternalPackages: ["mongoose"],
 };
 
 export default nextConfig;

@@ -48,7 +48,7 @@ export default function CartPage() {
 
   const obtenerPrecios = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/precios")
+      const res = await axios.get("/api/precios")
       setPrecios(res.data)
     } catch (error) {
       mostrarDialogo("Error", "No se pudo cargar los precios, Por favor vuelva a intentarlo", "error")
@@ -121,7 +121,7 @@ export default function CartPage() {
 
     try {
 
-      await fetch("http://localhost:4000/telegram/pedido", {
+      await fetch("/api/telegram/pedido", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

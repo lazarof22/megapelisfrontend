@@ -19,7 +19,7 @@ export default function MediaSection({ titulo, tipo }: Props) {
     const fetchData = async () => {
       try {
 
-        const res = await axios.get(`http://localhost:4000/${tipo}`)
+        const res = await axios.get(`/api/${tipo}`)
 
         setItems(res.data)
 

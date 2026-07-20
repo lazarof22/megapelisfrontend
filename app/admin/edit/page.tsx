@@ -69,8 +69,8 @@ export default function EditarContenido() {
         try {
 
             const [peliculas, series] = await Promise.all([
-                axios.get("http://localhost:4000/peliculas"),
-                axios.get("http://localhost:4000/series"),
+                axios.get("/api/peliculas"),
+                axios.get("/api/series"),
             ])
 
             const data = [
@@ -135,7 +135,7 @@ export default function EditarContenido() {
             }
 
             await axios.patch(
-                `http://localhost:4000/${tipo}/${contenidoSeleccionado._id}`,
+                `/api/${tipo}/${contenidoSeleccionado._id}`,
                 data
             )
 
