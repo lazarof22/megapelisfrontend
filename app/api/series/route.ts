@@ -10,7 +10,8 @@ export async function GET() {
     await connectDB()
     const series = await Serie.find().sort({ fechaAgregado: -1 })
     return NextResponse.json(series)
-  } catch {
+  } catch (error) {
+    console.error("Error GET /api/series:", error)
     return NextResponse.json({ message: "Error obteniendo series" }, { status: 500 })
   }
 }
@@ -22,7 +23,11 @@ export async function POST(req: NextRequest) {
     const body = await req.json()
     const serie = await Serie.create(body)
     return NextResponse.json(serie, { status: 201 })
-  } catch {
-    return NextResponse.json({ message: "Error creando serie" }, { status: 500 })
+  } catch (error) {
+    console.error("Error POST /api/series:", error)
+    return NextResponse.json(
+      { message: "Error creando serie", error: String(error) },
+      { status: 500 }
+    )
   }
 }
