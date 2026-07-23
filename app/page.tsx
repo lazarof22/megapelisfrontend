@@ -5,6 +5,7 @@ import HeroBannerDynamic from "@/components/HeroBannerDynamic"
 import MediaSection from "@/components/MediaSection"
 import Box from "@mui/material/Box"
 import MediaCard from "@/components/MediaCard"
+import SearchBar from "@/components/SearchBar"
 
 export default function Home() {
 
@@ -13,6 +14,8 @@ export default function Home() {
     <MainLayout>
 
       <HeroBannerDynamic />
+
+      <SearchBar />
 
       <Box mt={4}>
 
