@@ -15,7 +15,9 @@ export default function Home() {
 
       <HeroBannerDynamic />
 
-      <SearchBar />
+      <Box mt={4}>
+        <SearchBar />
+      </Box>
 
       <Box mt={4}>
 
