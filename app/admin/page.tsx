@@ -47,9 +47,6 @@ export default function AdminPage() {
     setType(p0)
   }
 
-  const [posterPreview, setPosterPreview] = useState("")
-  const [bannerPreview, setBannerPreview] = useState("")
-
   useEffect(() => {
     if (!isAdmin()) {
       router.push("/admin/login")
@@ -167,17 +164,21 @@ export default function AdminPage() {
                   <MenuItem value="Comedia">Comedia</MenuItem>
                   <MenuItem value="Drama">Drama</MenuItem>
                   <MenuItem value="Animados">Animados</MenuItem>
+                  <MenuItem value="Thriller">Thriller</MenuItem>
+                  <MenuItem value="Suspenso">Suspenso</MenuItem>
                 </TextField>
               </Box>
-              <Box sx={{ flex: { xs: "100%", md: "32%" } }}>
-                <TextField
-                  label="IMDB Rating"
-                  type="number"
-                  fullWidth
-                  value={imdbRating}
-                  onChange={(e) => setImdbRating(e.target.value)}
-                />
-              </Box>
+              {tipo != "juegos" && (
+                <Box sx={{ flex: { xs: "100%", md: "32%" } }}>
+                  <TextField
+                    label="IMDB Rating"
+                    type="number"
+                    fullWidth
+                    value={imdbRating}
+                    onChange={(e) => setImdbRating(e.target.value)}
+                  />
+                </Box>
+              )}
               <Box sx={{ flex: { xs: "100%", md: "32%" } }}>
                 <TextField
                   label="Peso GB"

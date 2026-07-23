@@ -9,29 +9,29 @@ import Typography from "@mui/material/Typography"
 import { useCart } from "@/context/CartContext"
 import { useRouter } from "next/navigation"
 
-export default function AdminAppBarMain(){
+export default function AdminAppBarMain() {
 
- const {items} = useCart()
- const router = useRouter()
+  const { items } = useCart()
+  const router = useRouter()
 
- return(
-  <AppBar position="fixed" sx={{paddingLeft:10}} color="primary" elevation={0}>
-   <Toolbar>
+  return (
+    <AppBar position="fixed" sx={{ paddingLeft: 10 }} color="primary" elevation={0}>
+      <Toolbar>
 
-    <Typography variant="h6" sx={{flexGrow:1}}>
-      MegapelisTV Sesion Administrativa
-    </Typography>
+        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          MegapelisTV Sesion Administrativa
+        </Typography>
 
-    <IconButton
-      color="inherit"
-      onClick={()=>router.push("/pedido")}
-    >
-      <Badge badgeContent={items.length} color="primary">
-        <ShoppingCartIcon/>
-      </Badge>
-    </IconButton>
+        <IconButton
+          color="inherit"
+          onClick={() => router.push("/pedido")}
+        >
+          <Badge badgeContent={items.length} color="primary">
+            <ShoppingCartIcon />
+          </Badge>
+        </IconButton>
 
-   </Toolbar>
-  </AppBar>
- )
+      </Toolbar>
+    </AppBar>
+  )
 }

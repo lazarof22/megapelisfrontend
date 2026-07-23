@@ -84,7 +84,7 @@ export default function MediaCard({ item, tipo }: any) {
 
         {item.temporada && (
           <Typography variant="body2">
-            📺 Temporadas: {item.temporada}
+            📺 Temporada: {item.temporada}
           </Typography>
         )}
 
