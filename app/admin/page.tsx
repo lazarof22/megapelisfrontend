@@ -25,6 +25,7 @@ export default function AdminPage() {
   const [genero, setGenero] = useState("")
   const [sinopsis, setSinopsis] = useState("")
   const [imdbRating, setImdbRating] = useState("")
+  const [ratingSteam, setRatingSteam] = useState("")
   const [pesoGB, setPesoGB] = useState("")
   const [year, setYear] = useState("")
   const [popularidad, setPopularidad] = useState("")
@@ -83,11 +84,15 @@ export default function AdminPage() {
         data.temporada = Number(temporada)
       }
 
+      if (tipo === "juegos") {
+        data.ratingSteam = Number(ratingSteam)
+      }
+
       await axios.post(`/api/${tipo}`, data)
 
       mostrarDialogo(
         "Contenido agregado",
-        "La película fue agregada correctamente",
+        `La ${tipo} ha sido agregada correctamente`,
         "success"
       )
 
@@ -168,14 +173,26 @@ export default function AdminPage() {
                   <MenuItem value="Suspenso">Suspenso</MenuItem>
                 </TextField>
               </Box>
-              {tipo != "juegos" && (
+              {tipo != "juegos" &&
+                (
+                  <Box sx={{ flex: { xs: "100%", md: "32%" } }}>
+                    <TextField
+                      label="IMDB Rating"
+                      type="number"
+                      fullWidth
+                      value={imdbRating}
+                      onChange={(e) => setImdbRating(e.target.value)}
+                    />
+                  </Box>
+                )}
+              {tipo === "juegos" && (
                 <Box sx={{ flex: { xs: "100%", md: "32%" } }}>
                   <TextField
-                    label="IMDB Rating"
+                    label="Rating Steam"
                     type="number"
                     fullWidth
-                    value={imdbRating}
-                    onChange={(e) => setImdbRating(e.target.value)}
+                    value={ratingSteam}
+                    onChange={(e) => setRatingSteam(e.target.value)}
                   />
                 </Box>
               )}

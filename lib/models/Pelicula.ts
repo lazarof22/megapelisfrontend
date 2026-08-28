@@ -10,7 +10,6 @@ const PeliculaSchema = new Schema({
   banner: String,
   year: Number,
   destacado: { type: Boolean, default: false },
-  popularidad: { type: Number, default: 0 },
   fechaAgregado: { type: Date, default: Date.now },
 })
 

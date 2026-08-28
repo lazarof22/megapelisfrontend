@@ -1,11 +1,10 @@
 "use client"
 
-import axios from "axios"
 import { createContext, useContext, useEffect, useState } from "react"
 
 type Item = {
   id: string
-  tipo: "peliculas" | "series" | "juegos"
+  tipo: "peliculas" | "series" | "juegos" | "novelas"
   nombre: string
   temporada?: number[]
   pesoGB?: number
@@ -21,8 +20,6 @@ type CartContextType = {
 const CartContext = createContext<CartContextType | null>(null)
 
 export function CartProvider({ children }: any) {
-
-  
 
   const [items, setItems] = useState<Item[]>([])
 
@@ -45,8 +42,6 @@ export function CartProvider({ children }: any) {
   const clear = () => {
     setItems([])
   }
-
-  
 
   return (
     <CartContext.Provider value={{ items, addItem, removeItem, clear }}>

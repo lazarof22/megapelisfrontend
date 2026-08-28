@@ -11,7 +11,6 @@ const SerieSchema = new Schema({
   year: Number,
   temporada: Number,
   destacado: { type: Boolean, default: false },
-  popularidad: { type: Number, default: 0 },
   fechaAgregado: { type: Date, default: Date.now },
 })
 
