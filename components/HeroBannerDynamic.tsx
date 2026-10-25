@@ -18,6 +18,7 @@ type Item = {
   sinopsis: string
   tipo: "peliculas" | "series" | "juegos"
   imdbRating?: number
+  ratingSteam?: number
   year?: number
   temporada?: number
   pesoGB?: number
@@ -137,25 +138,51 @@ export default function HeroBannerDynamic() {
         }}
       >
 
-        <Typography sx={{ color: "#e50914", fontWeight: "bold", fontSize: { xs: 12, md: 14 } }}>
+        <Typography sx={{ color: "#e50914", fontWeight: "bold", fontSize: { xs: 15, md: 16 } }}>
           {movie.tipo.toUpperCase()}
         </Typography>
 
         <Typography
           variant="h4"
           fontWeight="bold"
-          sx={{ fontSize: { xs: "h4.fontSize", md: "h3.fontSize" } }}
+          sx={{ fontSize: { xs: "h4.fontSize", md: "h4.fontSize" } }}
         >
           {movie.nombre}
         </Typography>
+        {movie.tipo === "series" && (
+          <Typography sx={{ color: "#fff", fontWeight: "bold", fontSize: { xs: 15, md: 16 } }}>
+            Temporada: {movie.temporada}
+          </Typography>
+        )}
 
         {/* IMDB */}
-        <Box display="flex" alignItems="center" gap={1} mt={1}>
-          <StarIcon sx={{ color: "#f5c518" }} />
-          <Typography fontSize={{ xs: 12, md: 14 }}>
-            {movie.imdbRating || "N/A"} / 10
-          </Typography>
-        </Box>
+        {movie.tipo != "juegos" && (
+          <Box display="flex" alignItems="center" gap={1} mt={1}>
+            <Box
+              component="img"
+              src="/images/imdbicon.jpg"
+              alt="IMDB"
+              sx={{ width: { xs: 45, md: 55 }, borderRadius: 1 }}
+            />
+            <Typography fontWeight="bold" fontSize={{ xs: 15, md: 16 }}>
+              {movie.imdbRating || "N/A"} / 10
+            </Typography>
+          </Box>
+        )}
+
+        {movie.tipo === "juegos" && (
+          <Box display="flex" alignItems="center" gap={1} mt={1}>
+            <Box
+              component="img"
+              src="/images/steamicon.jpg"
+              alt="Steam"
+              sx={{ width: { xs: 45, md: 55 }, borderRadius: 1 }}
+            />
+            <Typography fontWeight="bold" fontSize={{ xs: 15, md: 16 }}>
+              {movie.ratingSteam || "N/A"} / 10
+            </Typography>
+          </Box>
+        )}
 
         {/* SINOPSIS (recortada en móvil) */}
         <Typography

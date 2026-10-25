@@ -12,6 +12,7 @@ import MovieIcon from "@mui/icons-material/Movie"
 import TvIcon from "@mui/icons-material/Tv"
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports"
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline"
+import ContenidoDialog from "./ContenidoDialog"
 import { useRouter } from "next/navigation"
 
 // -----------------------------------------------------------------------
@@ -108,6 +109,8 @@ export default function SearchBar({
   const containerRef = useRef<HTMLDivElement>(null)
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const abortRef = useRef<AbortController | null>(null)
+
+  const [selectedContent, setSelectedContent] = useState<SearchSuggestion | null>(null)
 
   // ---------------------------------------------------------------------
   // Cerrar el dropdown al hacer click fuera
@@ -226,7 +229,7 @@ export default function SearchBar({
     if (onSelect) {
       onSelect(item)
     } else {
-      router.push(`/${item.tipo}/${item.id}`)
+      setSelectedContent(item)
     }
   }
 
@@ -421,6 +424,11 @@ export default function SearchBar({
             })}
         </Paper>
       )}
+      <ContenidoDialog
+        open={Boolean(selectedContent)}
+        selection={selectedContent}
+        onClose={() => setSelectedContent(null)}
+      />
     </Box>
   )
 }

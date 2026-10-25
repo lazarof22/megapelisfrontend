@@ -28,6 +28,8 @@ export default function MediaCard({ item, tipo }: any) {
       nombre: item.nombre,
       tipo: tipo, // 🔥 ahora sí llega bien
       pesoGB: item.pesoGB,
+      imdbRating: item.imdbRating || null,
+      ratingSteam: item.ratingSteam || null,
       temporada: item.temporada || null,
       precio: 0
     }
@@ -70,9 +72,33 @@ export default function MediaCard({ item, tipo }: any) {
           {item.nombre}
         </Typography>
 
-        <Typography variant="body2" sx={{ mt: .5 }}>
-          ⭐ IMDb: {item.imdbRating ?? "N/A"}
-        </Typography>
+        {tipo != "juegos" && (
+          <Box display="flex" alignItems="center" gap={1} mt={1}>
+            <Box
+              component="img"
+              src="/images/imdbicon.jpg"
+              alt="IMDB"
+              sx={{ width: { xs: 30, md: 40 }, borderRadius: 1 }}
+            />
+            <Typography fontWeight="bold" fontSize={{ xs: 15, md: 16 }}>
+              {item.imdbRating || "N/A"} / 10
+            </Typography>
+          </Box>
+        )}
+
+        {tipo === "juegos" && (
+          <Box display="flex" alignItems="center" gap={1} mt={1}>
+            <Box
+              component="img"
+              src="/images/steamicon.jpg"
+              alt="Steam"
+              sx={{ width: { xs: 30, md: 35 }, borderRadius: 1 }}
+            />
+            <Typography fontWeight="bold" fontSize={{ xs: 15, md: 16 }}>
+              {item.ratingSteam || "N/A"} / 10
+            </Typography>
+          </Box>
+        )}
 
         <Typography variant="body2">
           📅 Año: {item.year}

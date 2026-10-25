@@ -28,7 +28,7 @@ export default function HeroBanner({
       }}
     >
       <Box maxWidth={500}>
-        <Typography variant="h3" fontWeight="bold">
+        <Typography variant="h4" fontWeight="bold">
           {titulo}
         </Typography>
 
@@ -38,7 +38,7 @@ export default function HeroBanner({
 
         <Box mt={3} display="flex" gap={2}>
           <Button variant="contained" color="primary">
-            Ver
+            Pedir
           </Button>
 
           <Button variant="outlined">
