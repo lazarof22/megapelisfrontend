@@ -411,7 +411,7 @@ export default function CartPage() {
                       gap: 2,
                       px: 1.5,
                       py: 0.5,
-                      maxWidth: { xs: 120, sm: 120 }
+                      maxWidth: { xs: 130, sm: 130 }
                     }}
                   >
                     <Typography fontWeight={600} fontSize={{ xs: 15, sm: 17 }} color="#fff">
