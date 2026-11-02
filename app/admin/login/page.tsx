@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import { FormEvent, useState } from "react";
 import {
@@ -16,20 +16,19 @@ import PersonOutlineRoundedIcon from "@mui/icons-material/PersonOutlineRounded";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
+import axios from "axios"
+import { useRouter } from "next/navigation"
 
 type AdminLoginProps = {
-  /** Conecta aquí la autenticación que ya utiliza Megapelis. */
-  onLogin: (credentials: { username: string; password: string }) => Promise<void>;
-  /** Ruta de la imagen ubicada dentro de /public. */
   backgroundImage?: string;
   backHref?: string;
 };
 
 export default function AdminLogin({
-  onLogin,
   backgroundImage = "/images/fondo_login.jfif",
   backHref = "/",
 }: AdminLoginProps) {
+  const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -47,7 +46,13 @@ export default function AdminLogin({
 
     try {
       setLoading(true);
-      await onLogin({ username: username.trim(), password });
+      const res = await axios.post("/api/auth/login", { username: username.trim(), password: password });
+      if (res.data.access_token) {
+        localStorage.setItem("token", res.data.access_token)
+        router.push("/admin")
+      } else {
+        alert("Usuario o contraseña incorrecta")
+      }
     } catch (err) {
       setError(
         err instanceof Error
