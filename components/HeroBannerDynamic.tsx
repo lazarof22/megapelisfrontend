@@ -179,7 +179,7 @@ export default function HeroBannerDynamic() {
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
       sx={{
-        height: { xs: 380, md: 450 },
+        height: { xs: 380, md: 470 },
         boxSizing: "border-box",
         position: "relative",
         backgroundImage: `url(${movie.banner})`,
@@ -208,7 +208,7 @@ export default function HeroBannerDynamic() {
       <Box
         sx={{
           position: "relative",
-          maxWidth: { xs: "100%", md: 500 },
+          maxWidth: { xs: "100%", md: 700 },
           color: "#fff",
           borderRadius: 2,
           animation: "fadeIn 1s ease"
@@ -280,18 +280,31 @@ export default function HeroBannerDynamic() {
 
 
         {/* SINOPSIS (recortada en móvil) */}
-        <Typography
-          mt={2}
-          color="gray"
-          sx={{
-            display: "-webkit-box",
-            WebkitLineClamp: { xs: 2, md: 4 },
-            WebkitBoxOrient: "vertical",
-            overflow: "hidden"
-          }}
-        >
-          {movie.sinopsis}
-        </Typography>
+        <Box sx={{
+          width: 'auto',
+          backgroundColor: 'rgba(5, 37, 105, 0.23)',
+          color: 'rgb(5, 101, 114)',
+          border: '1px solid rgb(5, 101, 114)',
+          borderRadius: 2,
+          backdropFilter: "blur(14px) saturate(160%)",
+          WebkitBackdropFilter: "blur(14px) saturate(160%)",
+          transition: "all 0.25s ease",
+          mt: 1
+        }}>
+          <Typography
+            sx={{
+              fontWeight: 'bold',
+              display: "-webkit-box",
+              WebkitBoxOrient: "vertical",
+              WebkitLineClamp: { xs: 2, md: 4 },
+              overflow: "hidden",
+              p: 1
+            }}
+          >
+            {movie.sinopsis}
+          </Typography>
+        </Box>
+
 
         <Box mt={3} display="flex" gap={2}>
           <Button
