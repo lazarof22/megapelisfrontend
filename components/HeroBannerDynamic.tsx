@@ -252,7 +252,7 @@ export default function HeroBannerDynamic() {
               component="img"
               src="/images/steamicon.jpg"
               alt="Steam"
-              sx={{ width: { xs: 45, md: 55 }, height: { xs: 20, md: 29 }, borderRadius: 1 }}
+              sx={{ width: { xs: 45, md: 55 }, height: { xs: 24, md: 29 }, borderRadius: 1 }}
             />
             <RatingBadge value={movie.ratingSteam} />
           </Box>
