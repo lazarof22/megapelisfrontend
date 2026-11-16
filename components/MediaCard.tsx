@@ -194,43 +194,26 @@ export default function MediaCard({ item, tipo }: any) {
           <Box
             sx={{
               display: 'flex',
-              alignItems: 'center',
-              width: { xs: 65, md: 120 },
+              width: { xs: 116, md: 125 },
               height: { xs: 26, md: 29 },
-              gap: 1,
               mt: 1,
             }}
           >
             <Typography
               sx={{
-                color: 'rgb(73, 6, 82)',
                 fontWeight: "bold",
                 fontSize: { xs: 15, md: 16 },
-                backgroundColor: 'rgba(236, 13, 87, 0.54)',
-                border: '1px solid rgba(239, 68, 68, 0.2)',
+                backgroundColor: 'rgba(5, 37, 105, 0.61)',
+                color: 'rgb(5, 101, 114)',
+                border: '1px solid rgb(5, 101, 114)',
                 borderRadius: 2,
                 backdropFilter: "blur(14px) saturate(160%)",
                 WebkitBackdropFilter: "blur(14px) saturate(160%)",
                 px: 1,
-                width: { xs: 110, md: 120 },
+                width: { xs: 116, md: 125 },
                 height: { xs: 26, md: 29 },
               }}>
-              Temporada:
-            </Typography>
-            <Typography sx={{
-              color: 'rgb(240, 157, 101)',
-              fontWeight: "bold",
-              fontSize: { xs: 15, md: 16 },
-              backgroundColor: 'rgba(163, 8, 8, 0.91)',
-              border: '1px solid rgba(239, 68, 68, 0.2)',
-              borderRadius: 2,
-              backdropFilter: "blur(14px) saturate(160%)",
-              WebkitBackdropFilter: "blur(14px) saturate(160%)",
-              px: 1,
-              width: { xs: 65, md: 120 },
-              height: { xs: 26, md: 29 },
-            }}>
-              {item.temporada}
+              Temporada: {item.temporada}
             </Typography>
           </Box>
         )}
