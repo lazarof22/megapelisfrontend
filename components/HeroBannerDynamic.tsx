@@ -57,8 +57,8 @@ function RatingBadge({ value }: { value?: number }) {
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
-        width: { xs: 45, md: 55 },
-        height: { xs: 20, md: 29.8 },
+        width: { xs: 50, md: 55 },
+        height: { xs: 24, md: 29.8 },
         px: 1,
         borderRadius: "8px",
         fontWeight: 800,
@@ -272,7 +272,7 @@ export default function HeroBannerDynamic() {
               fontSize: { xs: 15, md: 16 },
               borderRadius: "6px",
               width: { xs: 65, md: 70 },
-              height: { xs: 20, md: 29 },
+              height: { xs: 26, md: 29 },
               py: 1
             }}
           />
